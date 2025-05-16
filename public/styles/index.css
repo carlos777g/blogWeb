@@ -1,0 +1,26 @@
+.sectionBlog {
+  border: 1px solid grey;
+  padding: 1rem;
+}
+
+.blog {
+    height: auto;/*20rem;*/
+    border: 1px solid grey;
+    overflow: hidden; 
+    padding: 1rem;
+    margin: 1rem;
+    justify-content: left;
+    box-sizing: border-box;
+}
+
+
+
+
+.edit-form {
+    display: inline-block;
+  }
+  
+  .boton {
+    margin: 0 0.5rem; 
+  }
+  

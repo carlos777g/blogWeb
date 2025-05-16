@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") %>
+    <!-- Form para crear nuevo Blog -->
+    <div class="container mt-5 col-10">
+        <form action="/createBlog" method="POST">
+            <div class="mb-3">
+                <h2>Crea un nuevo blog</h2>
+                <label class="form-label">Título del blog</label>
+                <input type="text" class="form-control" name="titulo" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Contenido del blog</label>
+                <textarea class="form-control" name="contenido" rows="5" required></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Envíar" />
+        </form>
+    </div>
+
+<br>
+    <!-- Aquí se pondrán todos los Blogs: -->
+    <div class="container mt-5 text-start sectionBlog">
+        <% if(locals.blogs.length > 0) { %>
+            <h1 class="mb-5">Blogs</h1>
+            <% for(let i=0; i<blogs.length; i+=2) {%>
+                <div class="row justify-content-center g-4">
+                  <div class="blog col-12 col-md-5 p-4 mx-3 my-4">
+                    <h3><%= blogs[i]["titulo"] %></h3>
+                    <p><%= blogs[i].contenido %></p>
+                  </div>
+                  <% if(blogs[i+1]) { %>
+                    <div class="blog col-12 col-md-5 p-4 mx-3 my-4">
+                        <h3><%= blogs[i+1]["titulo"] %></h3>
+                        <p><%= blogs[i+1].contenido %></p>
+                    <% } %>
+                    </div>
+                </div>
+            <% } %>
+            <% }else{ %>
+                <h1>Empieza creando tu primer blog!</h1>
+                <% } %>
+    </div>
+
+    <%- include("partials/footer.ejs") %>

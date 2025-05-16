@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+    <!-- Aquí se pondrán todos los Blogs: -->
+    <div class="container mt-5 text-start">
+        <% if(locals.blogs.length > 0) { %>
+            <% for(let i=0; i<blogs.length; i+=2) {%>
+                <div class="row justify-content-center g-4">
+                  <div class="blog col-12 col-md-5 p-4 mx-3 my-4">
+                    <h3><%= blogs[i]["titulo"] %></h3>
+                    <p><%= blogs[i].contenido %></p>
+                    <form class="edit-form" action="/editar" method="POST">
+                        <button type="submit" name="numBlog" value="<%=i%>" class="boton btn btn-warning my-3">
+                          Editar
+                        </button>
+                      </form>
+                      
+                      <form class="edit-form" action="/eliminar" method="POST">
+                        <button type="submit" name="confirmacion" value="<%=i%>" class="boton btn btn-danger my-3">
+                          Eliminar
+                        </button>
+                      </form>
+                  </div>
+
+                  <% if(blogs[i+1]) { %>
+                    <div class="blog col-12 col-md-5 p-4 mx-3 my-4">
+                        <h3><%= blogs[i+1]["titulo"] %></h3>
+                        <p><%= blogs[i+1].contenido %></p>
+                        
+                        <form class="edit-form" action="/editar" method="post">
+                        <button type="submit" name="numBlog" value="<%=i+1%>" class="boton btn btn-warning my-3">
+                            Editar
+                        </button>
+                        </form>
+
+                        <form class="edit-form" action="/eliminar" method="POST">
+                            <button type="submit" name="confirmacion" value="<%=i+1%>" class="boton btn btn-danger my-3">
+                              Eliminar
+                            </button>
+                        </form>
+                    <% } %>
+                    </div>
+                </div>
+            <% } %>
+            <% }else{ %>
+                <h1>Empieza creando tu primer blog!</h1>
+                <% } %>
+    </div>
+
+
+<%- include("partials/footer.ejs") %>
